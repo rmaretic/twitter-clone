@@ -5,7 +5,6 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.decorators import detail_route, api_view
 from rest_framework.views import APIView
-from django.http import HttpResponseRedirect
 
 @api_view(['GET'])
 def api_root(request, format=None):
@@ -97,6 +96,3 @@ class PrivateTimeline(generics.ListAPIView):
         user_ids = [f.followed.id for f in follower]
         posts = Posts.objects.filter(author__id__in=user_ids).order_by("datetime")
         return posts
-
-def redirect(request, **kwargs):
-    return HttpResponseRedirect('https://127.0.0.1:%s' % kwargs.get('var'))
