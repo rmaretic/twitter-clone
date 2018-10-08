@@ -7,15 +7,15 @@ from rest_framework.decorators import detail_route, api_view
 from rest_framework.views import APIView
 
 @api_view(['GET'])
-def api_root(request, format=None):
+def api_root(request):
     return Response({
-        'users': reverse('user-list', request=request, format=format),
-        'public timeline': reverse('public_timeline', request=request, format=format),
-        'private timeline': reverse('private_timeline', request=request, format=format),
-        'register': reverse('register_user', request=request, format=format),
-        'new post': reverse('new_post', request=request, format=format),
-        'users to follow': reverse('follow', request=request, format=format),
-        'users i follow': reverse('ifollow', request=request, format=format),
+        'users': reverse('user-list', request=request),
+        'public timeline': reverse('public_timeline', request=request),
+        'private timeline': reverse('private_timeline', request=request),
+        'register': reverse('register_user', request=request),
+        'new post': reverse('new_post', request=request),
+        'users to follow': reverse('follow', request=request),
+        'users i follow': reverse('ifollow', request=request),
     })
 
 
